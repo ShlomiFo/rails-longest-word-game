@@ -1,11 +1,23 @@
-<h1 class="text-center">New game</h1>
-<h2 class="bg-primary text-center text-white"> <%= @letters %> </h2>
-<form action="/score" method="post" data-turbo="false" class="text-center">
-   <input type="text" name="word" placeolder="make a word">
-    <br>
-    <br>
+<div class="container mt-5 game-container">
+  <h1>New Game</h1>
 
-    <input type="submit" value="" text="play" class="btn btn-primary w-20 p-3 text-white mb-10">
+  <div class="letter-container mt-3">
+    <h2>
+      <% @letters.each do |element| %>
+      <span class="p-3 mb-2 bg-primary text-white bg-opacity-75"><%=element%></span>
+      <% end %>
+    </h2>
+  </div>
 
-</form>
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="mt-4">
+    <p>What is the longest word you can create?</p>
+  </div>
+
+   <form action="/score" method="POST">
+    <input class="input-field" type="text" name="word"></input>
+    <input class="input-field" type="hidden" name="letters" value="<%= @letters %>"></input>
+<!--     <input id="token" name="token" type="hidden" value="VUBJKB23UIVI1UU1VOBVI@"/> -->
+    <input class="btn-submit" type="submit" value="Play">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>
