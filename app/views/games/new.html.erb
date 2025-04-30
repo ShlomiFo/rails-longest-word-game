@@ -1,0 +1,11 @@
+<h1 class="text-center">New game</h1>
+<h2 class="bg-primary text-center text-white"> <%= @letters %> </h2>
+<form action="/score" method="post" data-turbo="false" class="text-center">
+   <input type="text" name="word" placeolder="make a word">
+    <br>
+    <br>
+
+    <input type="submit" value="" text="play" class="btn btn-primary w-20 p-3 text-white mb-10">
+
+</form>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
